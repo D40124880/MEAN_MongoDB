@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="/reset.css">
+    <link rel="stylesheet" type="text/css" href="/style.css">
+    <title>Regisration Home Screen</title>
+</head>
+<body>
+    <div id='wrapper'>
+        <div class='messages'>
+                <% JSON.stringify(messages) %>
+                <% if(messages.user) { %>
+                    <% for (var x of messages.user) { %>
+                        <h3><%= x %></h3>
+                    <% } %>
+                <% } %>
+        </div>
+        <div id='login'>
+            <form action="/login2account/" method="post">
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>Email: </td>
+                            <td><input type="email" name="email" id="email"></td>
+                        </tr>
+                        <tr>
+                            <td>Password: </td>
+                            <td><input type="password" name="password" id="password"></td>
+                        </tr>
+                        <tr>
+                            <td><input type="submit" value="Login"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

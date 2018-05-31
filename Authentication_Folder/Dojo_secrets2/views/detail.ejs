@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="/reset.css">
+    <link rel="stylesheet" type="text/css" href="/style.css">
+    <title>Regisration Home Screen</title>
+</head>
+<body>
+    <div id='wrapper'>
+        <div class='messages'>
+                <% JSON.stringify(messages) %>
+                <% if(messages.user) { %>
+                    <% for (var x of messages.user) { %>
+                        <h3><%= x %></h3>
+                    <% } %>
+                <% } %>
+        </div>
+        <div id='results'>
+            <h1>Comment on this Secret</h1>
+            <a href='/home'><button>Home</button></a>
+            <a href='/logout'><button>Logout</button></a>
+            <h2><%= title %></h2>
+            <h2>User id: <%= userid %></h2>
+            <h2>Secret id: <%= secretid %></h2>
+            <% for(var x=0; x < comments.length; x++) { %>
+                <h3><%=comments[x].content %></h3>
+           <% } %>
+        </div>
+        <div id='comment'>
+            <form class='addcmt' action='/addcmt/<%= userid %>/<%= secretid %>' method='post'>
+                <hr>
+                <label class="comment" for="comment">Comment:</label>
+                <textarea class="combox" name="comment"></textarea>   
+                <input class='addbtn' type='submit' value='Submit'>
+            </form>  
+        </div>
+    </div>
+</body>
+</html>

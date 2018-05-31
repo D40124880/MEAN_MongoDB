@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class='messages'>
+        <% JSON.stringify(messages) %>
+        <% if(messages.quote) { %>
+            <% for (var x of messages.quote) { %>
+                <h3><%= x %></h3>
+            <% } %>
+        <% } %>
+    </div>
+
+    <div id='results'>
+        <h1>Here is the information for the requested mongoose!</h1>
+        <% for(var x in muser) { %>
+            <h3>"<%= muser[x].name %>"</h3>
+            <h3>"<%= muser[x].age %>"</h3>
+            <h3>"<%= muser[x].favorite_food %>"</h3>
+            <h3>"<%= muser[x].createdAt %>"</h3>
+            <hr>
+            <a href="/"><button>Go Back</button></a>
+            <hr>
+        <% } %>
+    </div>
+</body>
+</html>

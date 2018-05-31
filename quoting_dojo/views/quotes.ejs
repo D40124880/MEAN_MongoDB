@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h2><u><b>Here Are The Awesome Quotes!</b></u></h2>
+    <% if (quotes) { %>
+        <% for (x in quotes) { %>
+            <hr>
+            <h4>"<%= quotes[x].quote %>"</h4>
+            <p><%= quotes[x].name %> <%= quotes[x].createdAt %></p>
+        <% } %>    
+    <% } else { %>
+        <h2>There are no quotes in yet!</h2>
+    <% } %>
+
+    <a href="/"><button>Go Back</button></a>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class='messages'>
+        <% JSON.stringify(messages) %>
+        <% if(messages.quote) { %>
+            <% for (var x of messages.quote) { %>
+             <h3><%= x %></h3>
+            <% } %>
+        <% } %>
+    </div>
+
+    <div id="quoteentry">
+        <h1>Welcome, Please add a  Mongoose</h1>
+        <form class='form' action='/update/<%= muser[0]._id %>' method='post'>
+            <label class="name" for="name">Mongoose Name:</label>
+            <input class="namebox" type="text" name="name" value='<%= muser[0].name %>'>
+            <label class="age" for="age">Mongosse Age:</label>
+            <input class="agebox" type="text" name="age" value='<%= muser[0].age %>'>
+            <label class="favfood" for="favfood">Mongosse Favorite Food:</label>
+            <input class="favfoodbox" type="text" name="favfood" value='<%= muser[0].favorite_food %>'>
+            <input class="button" type="submit" value="Update the mongoose">
+        </form>
+    </div>
+</body>
+</html>

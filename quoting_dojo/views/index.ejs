@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to Quoting Dojo</h1>    
+    <% if(messages) { %>
+        <% for(var x in messages.add_quote) { %>
+            <h5><%= messages.add_quote[x] %></h5>
+        <% } %>
+    <% } %>
+
+    <br>
+
+    <form action="/add_quotes" method="POST">
+        <h3>Your name: <input type="text" name="name"></h3>
+        <h3>Your quote: <input type="text" name="quote"></h3>
+        <input type="submit" value="Add My Quote!"> <!-- &nbsp;  this is for an extra space-->
+    </form>
+    <br>
+    <a href="/quotes"><button>Skip To Quotes!</button></a>
+</body>
+</html>

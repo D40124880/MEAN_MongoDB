@@ -1,0 +1,295 @@
+> show dbs
+admin   0.000GB
+config  0.000GB
+local   0.000GB
+test    0.000GB
+> db
+test
+> use my_first_db
+switched to db my_first_db
+> db
+my_first_db
+> db.createCollection("students")
+{ "ok" : 1 }
+> db.students.insert({name:'Martin', home_state:'CA', lucky_number:777, birthday:{month:'April', day:19, year:1995}})
+WriteResult({ "nInserted" : 1 })
+> db.students.find().pretty()
+{
+	"_id" : ObjectId("5af391497ac514928a89301f"),
+	"name" : "Martin",
+	"home_state" : "CA",
+	"lucky_number" : 777,
+	"birthday" : {
+		"month" : "April",
+		"day" : 19,
+		"year" : 1995
+	}
+}
+> db.students.insert({name:’Jasmin', home_state:'CA', lucky_number:777, birthday:{month:’January', day:21, year:1994}})
+2018-05-09T17:27:26.471-0700 E QUERY    [thread1] SyntaxError: illegal character @(shell):1:25
+> db.students.insert({name:’Giovanni', home_state:'CA', lucky_number:777, birthday:{month:’September', day:4, year:1996}})
+2018-05-09T17:28:00.886-0700 E QUERY    [thread1] SyntaxError: illegal character @(shell):1:25
+> db.students.insert({name:’Giovanni', home_state:'CA', lucky_number:777, birthday:{month:’September', day:4, year:1996}})
+2018-05-09T17:29:58.245-0700 E QUERY    [thread1] SyntaxError: illegal character @(shell):1:25
+> db.students.find().pretty()
+{
+	"_id" : ObjectId("5af391497ac514928a89301f"),
+	"name" : "Martin",
+	"home_state" : "CA",
+	"lucky_number" : 777,
+	"birthday" : {
+		"month" : "April",
+		"day" : 19,
+		"year" : 1995
+	}
+}
+> db.students.insert({name:’Giovanni', home_state:'CA', lucky_number:777, birthday:{month:’September', day:4, year:1996}})
+2018-05-09T17:30:56.651-0700 E QUERY    [thread1] SyntaxError: illegal character @(shell):1:25
+> db.students.insert({name:’Giovanni', home_state:'CA', lucky_number:777, birthday:{month:’September', day:4, year:1996}})
+2018-05-09T17:32:19.562-0700 E QUERY    [thread1] SyntaxError: illegal character @(shell):1:25
+> db.students.insert({name:'Martin', home_state:'CA', lucky_number:777, birthday:{month:'April', day:19, year:1995}})
+WriteResult({ "nInserted" : 1 })
+> db.students.insert({name:'Giovanni', home_state:'CA', lucky_number:777, birthday:{month:'September', day:04, year:1996}})
+WriteResult({ "nInserted" : 1 })
+> db.students.insert({name:'Jasmin', home_state:'CA', lucky_number:777, birthday:{month:'January', day:21, year:1994}})
+WriteResult({ "nInserted" : 1 })
+> db.students.insert({name:'Kevin', home_state:'CA', lucky_number:69, birthday:{month:'February', day:08, year:1998}})
+WriteResult({ "nInserted" : 1 })
+> db.students.insert({name:'Jennifer', home_state:'CA', lucky_number:562, birthday:{month:'May', day:15, year:1993}})
+WriteResult({ "nInserted" : 1 })
+> db.results.remove({name:'Martin'})
+WriteResult({ "nRemoved" : 0 })
+> db.students.find().pretty()
+{
+	"_id" : ObjectId("5af391497ac514928a89301f"),
+	"name" : "Martin",
+	"home_state" : "CA",
+	"lucky_number" : 777,
+	"birthday" : {
+		"month" : "April",
+		"day" : 19,
+		"year" : 1995
+	}
+}
+{
+	"_id" : ObjectId("5af3936e7ac514928a893020"),
+	"name" : "Martin",
+	"home_state" : "CA",
+	"lucky_number" : 777,
+	"birthday" : {
+		"month" : "April",
+		"day" : 19,
+		"year" : 1995
+	}
+}
+{
+	"_id" : ObjectId("5af393737ac514928a893021"),
+	"name" : "Giovanni",
+	"home_state" : "CA",
+	"lucky_number" : 777,
+	"birthday" : {
+		"month" : "September",
+		"day" : 4,
+		"year" : 1996
+	}
+}
+{
+	"_id" : ObjectId("5af393947ac514928a893022"),
+	"name" : "Jasmin",
+	"home_state" : "CA",
+	"lucky_number" : 777,
+	"birthday" : {
+		"month" : "January",
+		"day" : 21,
+		"year" : 1994
+	}
+}
+{
+	"_id" : ObjectId("5af393ba7ac514928a893023"),
+	"name" : "Kevin",
+	"home_state" : "CA",
+	"lucky_number" : 69,
+	"birthday" : {
+		"month" : "February",
+		"day" : 8,
+		"year" : 1998
+	}
+}
+{
+	"_id" : ObjectId("5af394437ac514928a893024"),
+	"name" : "Jennifer",
+	"home_state" : "CA",
+	"lucky_number" : 562,
+	"birthday" : {
+		"month" : "May",
+		"day" : 15,
+		"year" : 1993
+	}
+}
+> db.students.remove({name:'Martin'})
+WriteResult({ "nRemoved" : 2 })
+> db.students.insert({name:'Martin', home_state:'CA', lucky_number:777, birthday:{month:'April', day:19, year:1995}})
+WriteResult({ "nInserted" : 1 })
+> db.students.find().pretty()
+{
+	"_id" : ObjectId("5af393737ac514928a893021"),
+	"name" : "Giovanni",
+	"home_state" : "CA",
+	"lucky_number" : 777,
+	"birthday" : {
+		"month" : "September",
+		"day" : 4,
+		"year" : 1996
+	}
+}
+{
+	"_id" : ObjectId("5af393947ac514928a893022"),
+	"name" : "Jasmin",
+	"home_state" : "CA",
+	"lucky_number" : 777,
+	"birthday" : {
+		"month" : "January",
+		"day" : 21,
+		"year" : 1994
+	}
+}
+{
+	"_id" : ObjectId("5af393ba7ac514928a893023"),
+	"name" : "Kevin",
+	"home_state" : "CA",
+	"lucky_number" : 69,
+	"birthday" : {
+		"month" : "February",
+		"day" : 8,
+		"year" : 1998
+	}
+}
+{
+	"_id" : ObjectId("5af394437ac514928a893024"),
+	"name" : "Jennifer",
+	"home_state" : "CA",
+	"lucky_number" : 562,
+	"birthday" : {
+		"month" : "May",
+		"day" : 15,
+		"year" : 1993
+	}
+}
+{
+	"_id" : ObjectId("5af394ae7ac514928a893025"),
+	"name" : "Martin",
+	"home_state" : "CA",
+	"lucky_number" : 777,
+	"birthday" : {
+		"month" : "April",
+		"day" : 19,
+		"year" : 1995
+	}
+}
+> db.students.find(lucky_number:777).pretty()
+2018-05-09T17:40:40.473-0700 E QUERY    [thread1] SyntaxError: missing ) after argument list @(shell):1:29
+> db.students.find({lucky_number:777}).pretty()
+{
+	"_id" : ObjectId("5af393737ac514928a893021"),
+	"name" : "Giovanni",
+	"home_state" : "CA",
+	"lucky_number" : 777,
+	"birthday" : {
+		"month" : "September",
+		"day" : 4,
+		"year" : 1996
+	}
+}
+{
+	"_id" : ObjectId("5af393947ac514928a893022"),
+	"name" : "Jasmin",
+	"home_state" : "CA",
+	"lucky_number" : 777,
+	"birthday" : {
+		"month" : "January",
+		"day" : 21,
+		"year" : 1994
+	}
+}
+{
+	"_id" : ObjectId("5af394ae7ac514928a893025"),
+	"name" : "Martin",
+	"home_state" : "CA",
+	"lucky_number" : 777,
+	"birthday" : {
+		"month" : "April",
+		"day" : 19,
+		"year" : 1995
+	}
+}
+> db.students.find({birthday.month:"April"}).pretty()
+2018-05-09T17:41:58.299-0700 E QUERY    [thread1] SyntaxError: missing : after property id @(shell):1:26
+> db.students.find({birthday:{month: "April"}}).pretty()
+> db.students.find({birthday:{month: "April"}})
+> db.students.find({lucky_number: {$lt:777}})
+{ "_id" : ObjectId("5af393ba7ac514928a893023"), "name" : "Kevin", "home_state" : "CA", "lucky_number" : 69, "birthday" : { "month" : "February", "day" : 8, "year" : 1998 } }
+{ "_id" : ObjectId("5af394437ac514928a893024"), "name" : "Jennifer", "home_state" : "CA", "lucky_number" : 562, "birthday" : { "month" : "May", "day" : 15, "year" : 1993 } }
+> db.students.find({lucky_number: {$lt:777}}).pretty()
+{
+	"_id" : ObjectId("5af393ba7ac514928a893023"),
+	"name" : "Kevin",
+	"home_state" : "CA",
+	"lucky_number" : 69,
+	"birthday" : {
+		"month" : "February",
+		"day" : 8,
+		"year" : 1998
+	}
+}
+{
+	"_id" : ObjectId("5af394437ac514928a893024"),
+	"name" : "Jennifer",
+	"home_state" : "CA",
+	"lucky_number" : 562,
+	"birthday" : {
+		"month" : "May",
+		"day" : 15,
+		"year" : 1993
+	}
+}
+> db.students.find({lucky_number: {$lt:777}}, {$gt:100}).pretty()
+{ "_id" : ObjectId("5af393ba7ac514928a893023") }
+{ "_id" : ObjectId("5af394437ac514928a893024") }
+> db.students.find({lucky_number: {$lt:777}}, {$gt:100})
+{ "_id" : ObjectId("5af393ba7ac514928a893023") }
+{ "_id" : ObjectId("5af394437ac514928a893024") }
+> db.students.find({lucky_number: {$lt:777, $gt:100}}.pretty()
+... 
+... db.students.find({lucky_number: {$lt:777}}, {$gt:100})
+... 
+... 
+> 
+> db.students.find({lucky_number: {$lt:777}}, {$gt:100}}.pretty()
+2018-05-09T17:51:02.313-0700 E QUERY    [thread1] SyntaxError: missing ) after argument list @(shell):1:53
+> db.students.find({lucky_number: {$lt:777}, {$gt:100}}.pretty()
+... 
+... 
+> db.students.find({lucky_number: {$lt:777, $gt:100}}).pretty()
+{
+	"_id" : ObjectId("5af394437ac514928a893024"),
+	"name" : "Jennifer",
+	"home_state" : "CA",
+	"lucky_number" : 562,
+	"birthday" : {
+		"month" : "May",
+		"day" : 15,
+		"year" : 1993
+	}
+}
+> db.students.find({birthday:{month: "April"}}).pretty()
+> db.students.find({birthday:{month: "January"}}).pretty()
+> db.students.find({birthday:{$elemMatch:{month: "January"}}}).pretty()
+> db.students.find({birthday:{$month: "January"}}).pretty()
+Error: error: {
+	"ok" : 0,
+	"errmsg" : "unknown operator: $month",
+	"code" : 2,
+	"codeName" : "BadValue"
+}
+> db.students.find({birthday:{$elemMatch:{month: "January"}}})
+> db.students.find({birthday:{month: "April"}}).pretty()
